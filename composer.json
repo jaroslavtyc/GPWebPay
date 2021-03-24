@@ -63,7 +63,6 @@
     "granam/tools": ">=3.0",
     "mockery/mockery": "~1.0",
     "phpunit/phpunit": "^9.4",
-    "rector/rector": "^0.10.3",
     "roave/security-advisories": "dev-master",
     "symfony/yaml": "^5.2"
   },
