@@ -34,29 +34,40 @@
     "email": "mail@jaroslavtyc.com",
     "issues": "https://github.com/jaroslavtyc/gpwebpay/issues"
   },
+  "autoload": {
+    "psr-4": {
+      "Granam\\GpWebPay\\": "GpWebPay"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Granam\\Tests\\GpWebPay\\": "tests/GpWebPay",
+      "Granam\\Tests\\ExceptionsHierarchy\\": "vendor/granam/exceptions-hierarchy/tests/ExceptionsHierarchy"
+    }
+  },
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.3",
     "ext-intl": "*",
-    "alcohol/iso4217": "^3.1",
-    "phpgt/dom": "^1.0",
-    "granam/strict-object": ">=3.0",
-    "granam/integer": ">=6.1",
-    "granam/float": ">=5.0",
-    "granam/string": ">=4.0"
+    "alcohol/iso4217": "^4.0",
+    "granam/boolean": "^3.3",
+    "granam/float": "~5.0",
+    "granam/integer": "~7.0",
+    "granam/strict-object": "~3.0",
+    "granam/string": "~4.0",
+    "phpgt/dom": "^2.0"
   },
   "require-dev": {
     "ext-curl": "*",
-    "roave/security-advisories": "dev-master",
-    "mockery/mockery": "~1.0",
     "granam/exceptions-hierarchy": ">=4.0",
-    "symfony/yaml": "^3.2",
+    "granam/test-with-mockery": ">=2.0",
     "granam/tools": ">=3.0",
-    "phpunit/phpunit": "^9.4"
+    "mockery/mockery": "~1.0",
+    "phpunit/phpunit": "^9.4",
+    "roave/security-advisories": "dev-master",
+    "symfony/yaml": "^5.2"
   },
-  "autoload": {
-    "psr-4": {
-      "Granam\\": "Granam/"
-    }
+  "config": {
+    "sort-packages": true
   },
   "suggest": {
     "granam/gpwebpay-flat": "Let's check accepted payments via GPWebPay report on daily basis"

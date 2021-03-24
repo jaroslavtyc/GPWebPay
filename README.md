@@ -113,7 +113,6 @@ For tests against [testing payment gateway](https://test.3dsecure.gpwebpay.com/p
 ```sh
 composer require granam/gpwebpay
 ```
-(requires PHP **7.0+**)
 
 ## Credits
 This library originates from [Pixidos/GPWebPay](https://github.com/Pixidos/GPWebPay) library, which has same

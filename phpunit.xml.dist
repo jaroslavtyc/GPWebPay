@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <phpunit
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.0/phpunit.xsd"
-        bootstrap="./Granam/Tests/tests_bootstrap.php"
+        xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/9.0/phpunit.xsd"
+        bootstrap="./tests/tests_bootstrap.php"
         convertErrorsToExceptions="true"
         convertNoticesToExceptions="true"
         convertWarningsToExceptions="true"
@@ -13,15 +13,12 @@
 >
     <testsuites>
         <testsuite name="all">
-            <directory>./Granam</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true" addUncoveredFilesFromWhitelist="true">
-            <directory>./Granam</directory>
-            <exclude>
-                <directory>./Granam/Tests</directory>
-            </exclude>
+            <directory>./GpWebPay</directory>
         </whitelist>
     </filter>
 </phpunit>
