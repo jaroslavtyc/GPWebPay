@@ -11,10 +11,7 @@ use Granam\Strict\Object\StrictObject;
  */
 class CurrencyCodes extends StrictObject implements Codes
 {
-    /**
-     * @var ISO4217
-     */
-    private $iso4217;
+    private \Alcohol\ISO4217 $iso4217;
 
     /**
      * @param ISO4217 $iso4217

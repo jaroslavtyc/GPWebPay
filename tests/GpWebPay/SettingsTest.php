@@ -138,7 +138,7 @@ class SettingsTest extends TestCase
         new Settings(
             'http://example.com',
             __DIR__ . '/files/testing_private_key.pem',
-            1234567, // password
+            1_234_567, // password
             'in a cloud',
             '',
             ''
@@ -155,7 +155,7 @@ class SettingsTest extends TestCase
         new Settings(
             'http://example.com',
             __DIR__ . '/files/testing_private_key.pem',
-            1234567, // password
+            1_234_567, // password
             __DIR__ . '/files/testing_public_key.pub',
             '321',
             '/dev/null'
@@ -172,7 +172,7 @@ class SettingsTest extends TestCase
         new Settings(
             'http://example.com',
             __DIR__ . '/files/testing_private_key.pem',
-            1234567, // password
+            1_234_567, // password
             __DIR__ . '/files/testing_public_key.pub',
             '321',
             'http://example.com/' . str_repeat('u', 301 - strlen('http://example.com/'))
@@ -211,7 +211,7 @@ class SettingsTest extends TestCase
         $settings = new Settings(
             'http://example.com',
             __DIR__ . '/files/testing_private_key.pem',
-            1234567, // password
+            1_234_567, // password
             __DIR__ . '/files/testing_public_key.pub',
             '321',
             null
@@ -256,7 +256,7 @@ class SettingsTest extends TestCase
         new Settings(
             'http://example.com',
             __DIR__ . '/files/testing_private_key.pem',
-            1234567, // password
+            1_234_567, // password
             __DIR__ . '/files/testing_public_key.pub',
             '321',
             null

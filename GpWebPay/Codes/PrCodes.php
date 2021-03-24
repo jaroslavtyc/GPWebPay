@@ -34,7 +34,7 @@ class PrCodes extends StrictObject implements Codes
     const TECHNICAL_PROBLEM = 1000;
     const GENERIC_PROBLEM = 'genericProblem';
 
-    private static $prCodes = [
+    private static array $prCodes = [
         LanguageCodes::CS => [
             self::GENERIC_PROBLEM => 'Technický problém v GP webpay systému, kontaktujte obchodníka',
             self::OK_CODE => 'OK',

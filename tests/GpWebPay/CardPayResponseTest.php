@@ -54,9 +54,7 @@ class CardPayResponseTest extends PayResponseTest
                 ResponseDigestKeys::USERPARAM1 => $userParam1,
                 ResponseDigestKeys::ADDINFO => $addInfo,
             ],
-            static function ($value) {
-                return $value !== null;
-            }
+            static fn($value) => $value !== null
         );
         $digestSigner = $this->createDigestSigner($digest, $parametersForDigest, true, $digest1, $merchantNumber, true);
         $cardPayResponse = new CardPayResponse(
@@ -100,9 +98,7 @@ class CardPayResponseTest extends PayResponseTest
         self::assertSame(
             array_filter(
                 $parameters,
-                static function ($value) {
-                    return $value !== null;
-                }
+                static fn($value) => $value !== null
             ),
             $cardPayResponse->getParametersForDigest()
         );
@@ -349,9 +345,7 @@ class CardPayResponseTest extends PayResponseTest
                 ResponseDigestKeys::USERPARAM1 => $userParam1,
                 ResponseDigestKeys::ADDINFO => $addInfo,
             ],
-            static function ($value) {
-                return $value !== null;
-            }
+            static fn($value) => $value !== null
         );
         $digestSigner = $this->createDigestSigner($digest, $parametersForDigest, false, $digest1, $merchantNumber, true);
         $this->expectException(\Granam\GpWebPay\Exceptions\ResponseDigestCanNotBeVerified::class);
@@ -415,9 +409,7 @@ class CardPayResponseTest extends PayResponseTest
                 ResponseDigestKeys::USERPARAM1 => $userParam1,
                 ResponseDigestKeys::ADDINFO => $addInfo,
             ],
-            static function ($value) {
-                return $value !== null;
-            }
+            static fn($value) => $value !== null
         );
         $digestSigner = $this->createDigestSigner($digest, $parametersForDigest, true, $digest1, $merchantNumber, false);
         $this->expectException(\Granam\GpWebPay\Exceptions\ResponseDigestCanNotBeVerified::class);

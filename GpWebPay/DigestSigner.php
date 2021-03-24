@@ -7,8 +7,7 @@ use Granam\Strict\Object\StrictObject;
 class DigestSigner extends StrictObject implements DigestSignerInterface
 {
 
-    /** @var SettingsInterface */
-    private $settings;
+    private \Granam\GpWebPay\SettingsInterface $settings;
     /** @var resource */
     private $privateKeyResource;
     /** @var resource */

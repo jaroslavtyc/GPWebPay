@@ -12,7 +12,7 @@ use Granam\Scalar\Tools\Exceptions\Exception as ConversionException;
 
 class CardPayResponse extends StrictObject implements PayResponse
 {
-    private static $expectedKeys = [
+    private static array $expectedKeys = [
         ResponseDigestKeys::OPERATION => true,
         ResponseDigestKeys::ORDERNUMBER => true,
         ResponseDigestKeys::PRCODE => true,
@@ -26,7 +26,7 @@ class CardPayResponse extends StrictObject implements PayResponse
         ResponseDigestKeys::ADDINFO => false,
     ];
 
-    private static $integerValues = [
+    private static array $integerValues = [
         ResponseDigestKeys::ORDERNUMBER,
         ResponseDigestKeys::PRCODE,
         ResponseDigestKeys::SRCODE,
@@ -73,7 +73,7 @@ class CardPayResponse extends StrictObject implements PayResponse
     {
         $normalizedValues = [];
         foreach (self::$expectedKeys as $key => $required) {
-            $values[$key] = $values[$key] ?? null;
+            $values[$key] ??= null;
             if ($required && $values[$key] === null) {
                 throw new Exceptions\BrokenResponse(
                     'Values to create ' . static::class . " are missing required '{$key}'"
@@ -96,12 +96,9 @@ class CardPayResponse extends StrictObject implements PayResponse
         return $normalizedValues;
     }
 
-    /** @var array $parametersForDigest */
-    private $parametersForDigest;
-    /** @var string */
-    private $digest;
-    /** @var string */
-    private $digest1;
+    private array $parametersForDigest;
+    private string $digest;
+    private string $digest1;
 
     /**
      * @param SettingsInterface $settings

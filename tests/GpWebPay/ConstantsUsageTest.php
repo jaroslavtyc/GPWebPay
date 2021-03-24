@@ -37,9 +37,7 @@ class ConstantsUsageTest extends TestCase
                 . implode(
                     ';',
                     array_map(
-                        static function (string $constantLike) {
-                            return "'{$constantLike}'";
-                        },
+                        static fn(string $constantLike) => "'{$constantLike}'",
                         $constantLikes
                     )
                 ) . '.'
@@ -87,9 +85,7 @@ class ConstantsUsageTest extends TestCase
      */
     private function getProjectNonCodeClasses(): array
     {
-        return array_filter($this->getProjectClasses(), static function (string $projectClass) {
-            return !is_a($projectClass, Codes::class) && $projectClass !== FlatReportParser::class;
-        });
+        return array_filter($this->getProjectClasses(), static fn(string $projectClass) => !is_a($projectClass, Codes::class) && $projectClass !== FlatReportParser::class);
     }
 
     /**

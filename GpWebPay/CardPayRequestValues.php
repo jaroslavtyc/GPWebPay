@@ -19,7 +19,7 @@ class CardPayRequestValues extends StrictObject
 {
 
     // name => is required
-    private static $keysExpectedInArray = [
+    private static array $keysExpectedInArray = [
         // required
         RequestDigestKeys::ORDERNUMBER => true,
         RequestDigestKeys::AMOUNT => true,
@@ -38,15 +38,15 @@ class CardPayRequestValues extends StrictObject
         RequestDigestKeys::ADDINFO => false,
         RequestPayloadKeys::LANG => false,
     ];
-    private static $integerKeysExpectedInArray = [
+    private static array $integerKeysExpectedInArray = [
         RequestDigestKeys::ORDERNUMBER,
         RequestDigestKeys::CURRENCY,
         RequestDigestKeys::MERORDERNUM,
         RequestDigestKeys::FASTPAYID,
     ];
-    private static $booleanKeysExpectedInArray = [RequestDigestKeys::DEPOSITFLAG];
-    private static $floatKeysExpectedInArray = [RequestDigestKeys::AMOUNT]; // as float price like 3.25 EUR
-    private static $arrayWithStringKeysExpectedInArray = [RequestDigestKeys::PAYMETHODS];
+    private static array $booleanKeysExpectedInArray = [RequestDigestKeys::DEPOSITFLAG];
+    private static array $floatKeysExpectedInArray = [RequestDigestKeys::AMOUNT]; // as float price like 3.25 EUR
+    private static array $arrayWithStringKeysExpectedInArray = [RequestDigestKeys::PAYMETHODS];
 
     public const PRICE_INDEX = 'PRICE';
 
@@ -147,43 +147,24 @@ class CardPayRequestValues extends StrictObject
         return $normalizedValues;
     }
 
-    // REQUIRED VALUES
-
-    /** @var int */
-    private $orderNumber;
-    /** @var int */
-    private $amount;
-    /** @var int */
-    private $currency;
-    /** @var int */
-    private $depositFlag;
-    // OPTIONAL VALUES
-    /** @var int|null */
-    private $merOrderNum;
-    /** @var string|null */
-    private $description;
+    private ?int $orderNumber = null;
+    private ?int $amount = null;
+    private ?int $currency = null;
+    private ?int $depositFlag = null;
+    private ?int $merOrderNum = null;
+    private ?string $description = null;
     /** @var string|null merchant data (note) */
-    private $md;
-    /** @var int|null */
-    private $fastPayId;
-    /** @var string|null */
-    private $payMethod;
-    /** @var string|null */
-    private $disablePayMethod;
-    /** @var string|null */
-    private $payMethods;
-    /** @var string|null */
-    private $email;
-    /** @var string|null */
-    private $referenceNumber;
-    /** @var string|null */
-    private $addInfo;
-    /** @var string|null */
-    private $lang;
+    private ?string $md = null;
+    private ?int $fastPayId = null;
+    private ?string $payMethod = null;
+    private ?string $disablePayMethod = null;
+    private ?string $payMethods = null;
+    private ?string $email = null;
+    private ?string $referenceNumber = null;
+    private ?string $addInfo = null;
+    private ?string $lang = null;
 
-    // SUPPORTIVE
-    /** @var float */
-    private $price;
+    private ?float $price = null;
 
     /**
      * @param CurrencyCodes $currencyCodes list of supported currencies in ISO 4217
@@ -391,9 +372,7 @@ class CardPayRequestValues extends StrictObject
                 $withoutDiacritics = StringTools::removeDiacritics($character);
                 $replacement = \preg_replace_callback(
                     $regexpWithRange,
-                    function (string $stillOutOfRange) {
-                        return \str_repeat('?', \mb_strlen($stillOutOfRange));
-                    },
+                    fn(string $stillOutOfRange) => \str_repeat('?', \mb_strlen($stillOutOfRange)),
                     $withoutDiacritics
                 );
                 $changes[] = [$character => $replacement];
@@ -416,9 +395,7 @@ class CardPayRequestValues extends StrictObject
                 . \implode(
                     ',',
                     \array_map(
-                        function ($character) {
-                            return \ord($character);
-                        },
+                        fn($character) => \ord($character),
                         \str_split($value)
                     )
                 ),

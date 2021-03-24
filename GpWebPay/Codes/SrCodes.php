@@ -8,7 +8,7 @@ class SrCodes extends StrictObject implements Codes
 {
     const CURRENCY_CODE = 7;
 
-    private static $srCodes = [
+    private static array $srCodes = [
         LanguageCodes::CS => [
             0 => '',
             1 => 'ORDERNUMBER',

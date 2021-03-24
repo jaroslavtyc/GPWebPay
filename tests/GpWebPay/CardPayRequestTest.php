@@ -72,9 +72,7 @@ class CardPayRequestTest extends PayRequestTest
             }
         }
         $expectedRequiredParametersWithoutDigest = $this->buildExpectedValues($requiredParameters, self::$settingsValues);
-        $expectedRequiredNonEmptyParameters = array_filter($expectedRequiredParametersWithoutDigest, function ($parameter) {
-            return (bool)$parameter;
-        });
+        $expectedRequiredNonEmptyParameters = array_filter($expectedRequiredParametersWithoutDigest, fn($parameter) => (bool)$parameter);
         $digest = 'right there';
         $expectedRequiredParametersForRequest = $expectedRequiredNonEmptyParameters;
         $expectedRequiredParametersForRequest[RequestPayloadKeys::DIGEST] = $digest;
@@ -102,9 +100,7 @@ class CardPayRequestTest extends PayRequestTest
             }
         }
         $expectedRequiredParametersWithoutDigest = $this->buildExpectedValues($parametersWithOptionalEmpty, self::$settingsValues);
-        $expectedRequiredNonEmptyParameters = array_filter($expectedRequiredParametersWithoutDigest, function ($parameter) {
-            return $parameter !== null;
-        });
+        $expectedRequiredNonEmptyParameters = array_filter($expectedRequiredParametersWithoutDigest, fn($parameter) => $parameter !== null);
         $digest = 'over here';
         $expectedRequiredParametersForRequest = $expectedRequiredNonEmptyParameters;
         $expectedRequiredParametersForRequest[RequestPayloadKeys::DIGEST] = $digest;
@@ -119,7 +115,7 @@ class CardPayRequestTest extends PayRequestTest
     }
 
     // in required order
-    private static $testingValues = [
+    private static array $testingValues = [
         'orderNumber' => 123,
         'amount' => 456,
         'currency' => 789,
@@ -152,7 +148,7 @@ class CardPayRequestTest extends PayRequestTest
         return $cardPayRequestValues;
     }
 
-    private static $settingsValues = [
+    private static array $settingsValues = [
         'merchantNumber' => '111',
         'urlForResponse' => 'FoO',
         'baseUrlForRequest' => 'BaR',
@@ -236,7 +232,7 @@ class CardPayRequestTest extends PayRequestTest
         return $reordered;
     }
 
-    private static $requiredParameterNames = [
+    private static array $requiredParameterNames = [
         'merchantNumber',
         'operation',
         'orderNumber',

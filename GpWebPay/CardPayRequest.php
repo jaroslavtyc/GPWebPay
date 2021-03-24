@@ -9,12 +9,9 @@ use Granam\Strict\Object\StrictObject;
 
 class CardPayRequest extends StrictObject implements \IteratorAggregate, PayRequest
 {
-    /** @var CardPayRequestValues */
-    private $cardPayRequestValues;
-    /** @var string */
-    private $requestUrl;
-    /** @var array */
-    private $parametersForRequest;
+    private \Granam\GpWebPay\CardPayRequestValues $cardPayRequestValues;
+    private string $requestUrl;
+    private array $parametersForRequest;
 
     /**
      * @param CardPayRequestValues $cardPayRequestValues

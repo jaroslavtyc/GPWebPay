@@ -337,8 +337,8 @@ class CardPayRequestValuesTest extends TestWithMockery
 
     public function provideTooLongParameters(): array
     {
-        $orderNumber = 1234567891234567;
-        $price = 1234567891234567;
+        $orderNumber = 1_234_567_891_234_567;
+        $price = 1_234_567_891_234_567;
         $currencyNumericCode = 978; // EUR
         $currencyPrecision = 2;
         $depositFlag = true;

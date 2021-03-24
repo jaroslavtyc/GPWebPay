@@ -76,18 +76,12 @@ class Settings extends StrictObject implements SettingsInterface
         );
     }
 
-    /** @var string */
-    private $baseUrlForRequest;
-    /** @var string */
-    private $privateKeyFile;
-    /** @var string */
-    private $privateKeyPassword;
-    /** @var string */
-    private $publicKeyFile;
-    /** @var string */
-    private $urlForResponse;
-    /** @var string */
-    private $merchantNumber;
+    private ?string $baseUrlForRequest = null;
+    private ?string $privateKeyFile = null;
+    private ?string $privateKeyPassword = null;
+    private ?string $publicKeyFile = null;
+    private ?string $urlForResponse = null;
+    private ?string $merchantNumber = null;
 
     /**
      * @param string $baseUrlForRequest
@@ -205,7 +199,7 @@ class Settings extends StrictObject implements SettingsInterface
      */
     private function setUrlForResponse(string $urlForResponse = null)
     {
-        $urlForResponse = $urlForResponse ?? $this->getCurrentRequestUrl();
+        $urlForResponse ??= $this->getCurrentRequestUrl();
         $urlForResponse = \trim($urlForResponse);
         if (!\filter_var($urlForResponse, FILTER_VALIDATE_URL)) {
             throw new Exceptions\InvalidUrl('Given ' . RequestDigestKeys::URL . " is not valid: '{$urlForResponse}'");

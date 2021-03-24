@@ -41,12 +41,9 @@ class GpWebPayErrorResponse extends \RuntimeException implements Runtime
         return [LanguageCodes::CS, LanguageCodes::EN];
     }
 
-    /** @var int */
-    private $prCode;
-    /** @var int */
-    private $srCode;
-    /** @var string|null */
-    private $resultText;
+    private int $prCode;
+    private int $srCode;
+    private ?string $resultText = null;
 
     /**
      * @param int $prCode

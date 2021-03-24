@@ -19,10 +19,7 @@ use Gt\Dom\HTMLDocument;
  */
 class LiveTest extends TestWithMockery
 {
-    /**
-     * @var Settings
-     */
-    private $settings;
+    private ?\Granam\GpWebPay\Settings $settings = null;
 
     protected function setUp(): void
     {
